@@ -1,0 +1,1146 @@
+from random import randint
+from time import sleep
+
+
+def planilha(c1, c2, c3, c4, c5, c6, c7, c8, c9):
+    ret1 = f'''
+                  |             |   
+                  |             |    
+           {c1}      |      {c2}      |      {c3}
+                  |             | 
+      ------------|-------------|----------
+                  |             |   
+                  |             |    
+           {c4}      |      {c5}      |      {c6}
+                  |             | 
+      ------------|-------------|----------
+                  |             |   
+                  |             |    
+           {c7}      |      {c8}      |      {c9}
+                  |             |
+                  |             |'''
+    print(ret1)
+
+
+def verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9):
+    if car1 == car2 == car3 or car4 == car5 == car6 or car7 == car8 == car9 or car1 == car4 == car7 or car2 == car5 == car8 or car3 == car6 == car9 or car1 == car5 == car9 or car3 == car5 == car7:
+        if car1 == car2 == car3 and car1 != 'O' and car2 != 'O' and car3 != 'O' or car4 == car5 == car6 and car4 != 'O' and car5 != 'O' and car6 != 'O' or car7 == car8 == car9 and car7 != 'O' and car8 != 'O' and car9 != 'O' or car1 == car4 == car7 and car1 != 'O' and car4 != 'O' and car7 != 'O' or car2 == car5 == car8 and car2 != 'O' and car5 != 'O' and car8 != 'O' or car3 == car6 == car9 and car3 != 'O' and car6 != 'O' and car9 != 'O' or car1 == car5 == car9 and car1 != 'O' and car5 != 'O' and car9 != 'O' or car3 == car5 == car7 and car3 != 'O' and car5 != 'O' and car7 != 'O':
+            vit = 'O X ganhou!'
+            return vit
+        elif car1 == car2 == car3 and car1 != 'X' and car2 != 'X' and car3 != 'X' or car4 == car5 == car6 and car4 != 'X' and car5 != 'X' and car6 != 'X' or car7 == car8 == car9 and car7 != 'X' and car8 != 'X' and car9 != 'X' or car1 == car4 == car7 and car1 != 'X' and car4 != 'X' and car7 != 'X' or car2 == car5 == car8 and car2 != 'X' and car5 != 'X' and car8 != 'X' or car3 == car6 == car9 and car3 != 'X' and car6 != 'X' and car9 != 'X' or car1 == car5 == car9 and car1 != 'X' and car5 != 'X' and car9 != 'X' or car3 == car5 == car7 and car3 != 'X' and car5 != 'X' and car7 != 'X':
+            vit = 'O O ganhou!'
+            return vit
+    else:
+        n = 'O jogo ainda não acabou'
+        return n
+
+
+vezjog = 0
+zeroum1 = 0
+zeroum2 = 0
+zeroum3 = 0
+while True:
+    car1 = 1
+    car2 = 2
+    car3 = 3
+    car4 = 4
+    car5 = 5
+    car6 = 6
+    car7 = 7
+    car8 = 8
+    car9 = 9
+    try:
+        des1 = int(input('''Seja bem-vindo você deseja jogar com:
+[ 1 ] outra pessoa
+[ 2 ] contra o computador
+Digite sua resposta aqui: '''))
+    except:
+        print('Você digitou um valor inválido, tente novamente')
+        sleep(0.5)
+    else:
+        if des1 != 1 and des1 != 2:
+            print('Você digitou um valor inválido, tente novamente')
+            sleep(0.5)
+        else:
+            break
+if des1 == 1:
+    print('Você selecionou a opção de jogar contra outra pessoa!')
+    jog1 = str(input('Digite o nome do primeiro jogador: '))
+    jog2 = str(input('Digite o nome do segundo jogador: '))
+    while True:
+        try:
+            des2 = int(input(f'''Quem deseja X? Quem escolher esta opção automaticamente começará
+[ 1 ] O jogador(a) {jog1}
+[ 2 ] O jogador(a) {jog2}
+[ 3 ] O computador vai sortear pra vocês!
+Digite sua resposta aqui: '''))
+        except:
+            print('Você digitou um valor inválido, tente novamente')
+            sleep(0.5)
+        else:
+            if des2 == 1:
+                x = jog1
+                o = jog2
+                sleep(1)
+                break
+            elif des2 == 2:
+                x = jog2
+                o = jog1
+                sleep(1)
+                break
+            elif des2 == 3:
+                var1 = randint(1, 2)
+                if var1 == 1:
+                    x = jog1
+                    o = jog2
+                    print(f'O jogador {jog1} começará')
+                    sleep(3)
+                    break
+                else:
+                    x = jog2
+                    o = jog1
+                    print(f'O jogador {jog2} começará')
+                    break
+            else:
+                print('Você digitou um valor inválido, tente novamente')
+    while True:
+        while True:
+            print(f'Vez do jogador {x}')
+            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+            try:
+                        des3 = int(input('Digite um sua opção: '))
+            except:
+                print('Você digitou um valor inválido, tente novamete!')
+            else:
+                if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                    print('Você digitou um valor inválido, tente novamete!')
+                elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                    print('Você digitou um valor inválido, tente novamete!')
+                elif des3 == 1:
+                    car1 = 'X'
+                    break
+                elif des3 == 2:
+                    car2 = 'X'
+                    break
+                elif des3 == 3:
+                    car3 = 'X'
+                    break
+                elif des3 == 4:
+                    car4 = 'X'
+                    break
+                elif des3 == 5:
+                    car5 = 'X'
+                    break
+                elif des3 == 6:
+                    car6 = 'X'
+                    break
+                elif des3 == 7:
+                    car7 = 'X'
+                    break
+                elif des3 == 8:
+                    car8 = 'X'
+                    break
+                elif des3 == 9:
+                    car9 = 'X'
+                    break
+        posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+        if posfim == 'O X ganhou!':
+            if x == jog1:
+                print(f'fim de jogo, o jogador {jog1} ganhou!')
+                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                break
+            elif x == jog2:
+                print(f'fim de jogo, o jogador {jog2} ganhou!')
+                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                break
+        if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+            print('Jogo empatado!')
+            break
+        while True:
+            print(f'Vez do jogador {o}')
+            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+            try:
+                des3 = int(input('Digite um sua opção: '))
+            except:
+                print('Você digitou um valor inválido, tente novamete!')
+            else:
+                if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                    print('Você digitou um valor inválido, tente novamete!')
+                elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                    print('Você digitou um valor inválido, tente novamete!')
+                elif des3 == 1:
+                    car1 = 'O'
+                    break
+                elif des3 == 2:
+                    car2 = 'O'
+                    break
+                elif des3 == 3:
+                    car3 = 'O'
+                    break
+                elif des3 == 4:
+                    car4 = 'O'
+                    break
+                elif des3 == 5:
+                    car5 = 'O'
+                    break
+                elif des3 == 6:
+                    car6 = 'O'
+                    break
+                elif des3 == 7:
+                    car7 = 'O'
+                    break
+                elif des3 == 8:
+                    car8 = 'O'
+                    break
+                elif des3 == 9:
+                    car9 = 'O'
+                    break
+            posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+            if posfim == 'O O ganhou!':
+                if o == jog1:
+                    print(f'fim de jogo, o jogador {jog1} ganhou!')
+                    planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                    break
+                elif o == jog2:
+                    print(f'fim de jogo, o jogador {jog2} ganhou!')
+                    planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                    break
+            if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                print('Jogo empatado!')
+                break
+elif des1 == 2:
+    print('Você decidiu jogar contra o computador!')
+    nome = str(input('Digite seu nome: '))
+    while True:
+        if zeroum1 == 1:
+            break
+        else:
+            try:
+                des2a = int(input('''Você vai querer:
+[ 1 ] modo fácil
+[ 2 ] modo difícil
+Digite sua resposta aqui: '''))
+            except:
+                print('Você digitou um valor inválido, tente novamente')
+            else:
+                if des2a == 1:
+                    while zeroum1 < 1:
+                        try:
+                            des3a = int(input(f'''Quem deseja X? Quem escolher esta opção automaticamente começará:
+[ 1 ] O(a) {nome} começará
+[ 2 ] O computador começará
+[ 3 ] O computador vai sortear pra você!
+Digite sua resposta aqui: '''))
+                        except:
+                            print('Você digitou um valor inválido, tente novamente')
+                            sleep(0.5)
+                        else:
+                            if des3a != 1 and des3a != 2 and des3a != 3:
+                                print('Você digitou um valor inválido, tente novamente')
+                            else:
+                                if des3a == 3:
+                                    zeroum3 = randint(1, 2)
+                                    if zeroum3 == 1:
+                                        des3a = 1
+                                        print(f'O jogador(a) {nome} começará')
+                                    elif zeroum3 == 2:
+                                        des3a = 2
+                                        print(f'O computador começará')
+                                while True:
+                                    if des3a == 1:
+                                        x = nome
+                                        o = 'computador'
+                                        print(f'Vez do jogador {nome}')
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        while True:
+                                            try:
+                                                des3 = int(input('Selicione sua opção: '))
+                                            except:
+                                                print('Você digitou um valor inválido!Tente novamente.')
+                                            else:
+                                                break
+                                        if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 == 1:
+                                            car1 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 2:
+                                            car2 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 3:
+                                            car3 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 4:
+                                            car4 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 5:
+                                            car5 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 6:
+                                            car6 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 7:
+                                            car7 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 8:
+                                            car8 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 9:
+                                            car9 = 'X'
+                                            zeroum2 = 1
+                                        if zeroum2 == 1:
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            if posfim == 'O X ganhou!':
+                                                if x == 'computador':
+                                                    print(f'fim de jogo, o jogador {x} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                                elif x == nome:
+                                                    print(f'fim de jogo, o jogador {nome} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                            if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                                print('Jogo empatado!')
+                                                break
+                                        while True:
+                                            comcar = randint(1, 9)
+                                            if comcar == car1 or comcar == car2 or comcar == car3 or comcar == car4 or comcar == car5 or comcar == car6 or comcar == car7 or comcar == car8 or comcar == car9:
+                                                if comcar == 1:
+                                                    car1 = 'O'
+                                                    break
+                                                elif comcar == 2:
+                                                    car2 = 'O'
+                                                    break
+                                                elif comcar == 3:
+                                                    car3 = 'O'
+                                                    break
+                                                elif comcar == 4:
+                                                    car4 = 'O'
+                                                    break
+                                                elif comcar == 5:
+                                                    car5 = 'O'
+                                                    break
+                                                elif comcar == 6:
+                                                    car6 = 'O'
+                                                    break
+                                                elif comcar == 7:
+                                                    car7 = 'O'
+                                                    break
+                                                elif comcar == 8:
+                                                    car8 = 'O'
+                                                    break
+                                                elif comcar == 9:
+                                                    car9 = 'O'
+                                                    break
+                                        print('O computador jogou desse jeito:')
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        sleep(3)
+                                        posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        if posfim == 'O O ganhou!':
+                                            if o == 'computador':
+                                                print(f'fim de jogo, o compudor ganhou!')
+                                                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                zeroum1 += 1
+                                                break
+                                            elif o == nome:
+                                                print(f'fim de jogo, o jogador {nome} ganhou!')
+                                                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                zeroum1 += 1
+                                                break
+                                        if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                            print('Jogo empatado!')
+                                            zeroum1 += 1
+                                            break
+                                    elif des3a == 2:
+                                        x = 'computador'
+                                        o = nome
+                                        while True:
+                                            comcar = randint(1, 9)
+                                            if comcar == car1 or comcar == car2 or comcar == car3 or comcar == car4 or comcar == car5 or comcar == car6 or comcar == car7 or comcar == car8 or comcar == car9:
+                                                if comcar == 1:
+                                                    car1 = 'X'
+                                                    break
+                                                elif comcar == 2:
+                                                    car2 = 'X'
+                                                    break
+                                                elif comcar == 3:
+                                                    car3 = 'X'
+                                                    break
+                                                elif comcar == 4:
+                                                    car4 = 'X'
+                                                    break
+                                                elif comcar == 5:
+                                                    car5 = 'X'
+                                                    break
+                                                elif comcar == 6:
+                                                    car6 = 'X'
+                                                    break
+                                                elif comcar == 7:
+                                                    car7 = 'X'
+                                                    break
+                                                elif comcar == 8:
+                                                    car8 = 'X'
+                                                    break
+                                                elif comcar == 9:
+                                                    car9 = 'X'
+                                                    break
+                                        print('O computador jogou desse jeito:')
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        sleep(3)
+                                        posfim = verificar(car1, car2 , car3, car4, car5, car6, car7, car8, car9)
+                                        if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                            print('Jogo empatado!')
+                                            zeroum1 += 1
+                                            break
+                                        if posfim == 'O X ganhou!':
+                                            if x == 'computador':
+                                                print(f'fim de jogo, o jogador computador ganhou!')
+                                                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                zeroum1 += 1
+                                                break
+                                            elif x == nome:
+                                                print(f'Fim de jogo, o jogador {nome} ganhou!')
+                                                planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                zeroum1 += 1
+                                                break
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        while True:
+                                            try:
+                                                des3 = int(input('Selicione sua opção: '))
+                                            except:
+                                                print('Você digitou um valor inválido!Tente novamente.')
+                                            else:
+                                                break
+                                        if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 == 1:
+                                            car1 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 2:
+                                            car2 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 3:
+                                            car3 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 4:
+                                            car4 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 5:
+                                            car5 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 6:
+                                            car6 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 7:
+                                            car7 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 8:
+                                            car8 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 9:
+                                            car9 = 'O'
+                                            zeroum2 = 1
+                                        if zeroum2 == 1:
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                                print('Jogo empatado!')
+                                                zeroum1 += 1
+                                                break
+                                            if posfim == 'O O ganhou!':
+                                                if o == 'computador':
+                                                    print(f'fim de jogo, o jogador computador ganhou!')
+                                                    planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                    zeroum1 += 1
+                                                    break
+                                                elif o == nome:
+                                                    print(f'fim de jogo, o jogador {nome} ganhou!')
+                                                    planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                                    zeroum1 += 1
+                                                    break
+
+                elif des2a == 2:
+                    zeroum1 = 0
+                    print('Você selecionou a opcão de jogar no modo difícil')
+                    while zeroum1 < 1:
+                        try:
+                                des3a = int(input(f'''Quem deseja X? Quem escolher esta opção automaticamente começará:
+[ 1 ] O(a) {nome} começará
+[ 2 ] O computador começará
+[ 3 ] O computador vai sortear pra você!
+Digite sua resposta aqui: '''))
+                        except:
+                            print('Você digitou um valor inválido, tente novamente')
+                            sleep(0.5)
+                        else:
+                            if des3a != 1 and des3a != 2 and des3a != 3:
+                                print('Você digitou um valor inválido, tente novamente')
+                            else:
+                                if des3a == 3:
+                                    zeroum3 = randint(1, 2)
+                                    if zeroum3 == 1:
+                                        des3a = 1
+                                        print(f'O jogador(a) {nome} começará')
+                                    elif zeroum3 == 2:
+                                        des3a = 2
+                                        print(f'O computador começará')
+                                while True:
+                                    if des3a == 1:
+                                        x = nome
+                                        o = 'computador'
+                                        print(f'Vez do jogador {nome}')
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        while True:
+                                            try:
+                                                des3 = int(input('Selicione sua opção: '))
+                                            except:
+                                                print('Você digitou um valor inválido!Tente novamente.')
+                                            else:
+                                                break
+                                        if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 == 1:
+                                            car1 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 2:
+                                            car2 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 3:
+                                            car3 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 4:
+                                            car4 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 5:
+                                            car5 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 6:
+                                            car6 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 7:
+                                            car7 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 8:
+                                            car8 = 'X'
+                                            zeroum2 = 1
+                                        elif des3 == 9:
+                                            car9 = 'X'
+                                            zeroum2 = 1
+                                        vezjog += 1
+                                        if zeroum2 == 1:
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            if posfim == 'O X ganhou!':
+                                                if x == 'computador':
+                                                    print(f'fim de jogo, o jogador {x} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                                elif x == nome:
+                                                    print(f'fim de jogo, o jogador {nome} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                            if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                                print('Jogo empatado!')
+                                                zeroum1 += 1
+                                                break
+                                        print('Vez do computador')
+                                        vezjog += 1
+                                        if car1 == car2 and car1 == 'O' and car2 == 'O' and car3 == 3:
+                                            car3 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car3 and car1 == 'O' and car3 == 'O' and car2 == 2:
+                                            car2 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car3 and car2 == 'O' and car3 == 'O' and car1 == 1:
+                                            car1 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car5 and car4 == 'O' and car5 == 'O' and car6 == 6:
+                                            car6 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car6 and car4 == 'O' and car6 == 'O' and car5 == 5:
+                                            car5 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car6 and car5 == 'O' and car6 == 'O' and car4 == 4:
+                                            car6 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car7 == car8 and car7 == 'O' and car8 == 'O' and car9 == 9:
+                                            car9 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car7 == car9 and car7 == 'O' and car9 == 'O' and car8 == 8:
+                                            car8 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car8 == car9 and car8 == 'O' and car9 == 'O' and car7 == 7:
+                                            car7 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car4 and car1 == 'O' and car4 == 'O' and car7 == 7:
+                                            car7 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car7 and car1 == 'O' and car7 == 'O' and car4 == 4:
+                                            car4 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car7 and car4 == 'O' and car7 == 'O' and car1 == 1:
+                                            car1 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car8 == car5 and car8 == 'O' and car5 == 'O' and car2 == 2:
+                                            car2 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car8 and car2 == 'O' and car8 == 'O' and car5 == 5:
+                                            car5 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car5 and car2 == 'O' and car5 == 'O' and car8 == 8:
+                                            car8 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car6 == car9 and car6 == 'O' and car9 == 'O' and car3 == 3:
+                                            car3 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car9 and car3 == 'O' and car9 == 'O' and car6 == 6:
+                                            car6 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car6 and car3 == 'O' and car6 == 'O' and car9 == 9:
+                                            car9 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car5 and car1 == 'O' and car5 == 'O' and car9 == 9:
+                                            car9 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car9 and car1 == 'O' and car9 == 'O' and car5 == 5:
+                                            car1 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car9 and car5 == 'O' and car9 == 'O' and car1 == 1:
+                                            car1 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car5 and car3 == 'O' and car5 == 'O' and car7 == 7:
+                                            car7 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car7 and car3 == 'O' and car7 == 'O' and car5 == 5:
+                                            car5 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car7 and car5 == 'O' and car7 == 'O' and car3 == 3:
+                                            car3 = 'O'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car2 and car1 == 'X' and car2 == 'X' and car3 == 3:
+                                            car3 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car3 and car1 == 'X' and car3 == 'X' and car2 == 2:
+                                            car2 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car3 and car2 == 'X' and car3 == 'X' and car1 == 1:
+                                            car1 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car5 and car4 == 'X' and car5 == 'X' and car6 == 6:
+                                            car6 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car6 and car4 == 'X' and car6 == 'X' and car5 == 5:
+                                            car5 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car6 and car5 == 'X' and car6 == 'X' and car4 == 4:
+                                            car4 = 'O' 
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car7 == car8 and car7 == 'X' and car8 == 'X' and car9 == 9:
+                                            car9 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car7 == car9 and car7 == 'X' and car9 == 'X' and car8 == 8:
+                                            car8 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car8 == car9 and car8 == 'X' and car9 == 'X' and car7 == 7:
+                                            car7 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car4 and car1 == 'X' and car4 == 'X' and car7 == 7:
+                                            car7 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car7 and car1 == 'X' and car7 == 'X' and car4 == 4:
+                                            car4 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car7 and car4 == 'X' and car7 == 'X' and car1 == 1:
+                                            car1 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car8 == car5 and car8 == 'X' and car5 == 'X' and car2 == 2:
+                                            car2 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car8 and car2 == 'X' and car8 == 'X' and car5 == 5:
+                                            car5 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car5 and car2 == 'X' and car5 == 'X' and car8 == 8:
+                                            car8 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car6 == car9 and car6 == 'X' and car9 == 'X' and car3 == 3:
+                                            car3 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car9 and car3 == 'X' and car9 == 'X' and car6 == 6:
+                                            car6 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car6 and car3 == 'X' and car6 == 'X' and car9 == 9:
+                                            car9 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car5 and car1 == 'X' and car5 == 'X' and car9 == 9:
+                                            car9 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car9 and car1 == 'X' and car9 == 'X' and car5 == 5:
+                                            car1 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car9 and car5 == 'X' and car9 == 'X' and car1 == 1:
+                                            car1 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car5 and car3 == 'X' and car5 == 'X' and car7 == 7:
+                                            car7 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car7 and car3 == 'X' and car7 == 'X' and car5 == 5:
+                                            car5 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car7 and car5 == 'X' and car7 == 'X' and car3 == 3:
+                                            car3 = 'O'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car9 and car1 == 'X' and car9 == 'X' and car5 == 'O' and vezjog == 4:
+                                            car8 = 'O'
+                                        elif car3 == car7 and car3 == 'X' and car7 == 'X' and car5 == 'O' and vezjog == 4:
+                                            car8 = 'O'
+                                        elif car5 == 5:
+                                            car5 = 'O'
+                                        elif car3 == 1:
+                                            car3 = 'O'
+                                        elif car1 == 3:
+                                            car1 = 'O'
+                                        elif car7 == 7:
+                                            car7 = 'O'
+                                        elif car9 == 9:
+                                            car9 = 'O'
+                                        elif car2 == 2:
+                                            car2 = 'O'
+                                        elif car4 == 4:
+                                            car4 = 'O'
+                                        elif car6 == 6:
+                                            car6 = 'O'
+                                        elif car8 == 8:
+                                            car8 = 'O'
+                                    elif des3a == 2:
+                                        vezjog += 1
+                                        if vezjog >= 9:
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Jogo empatado')
+                                            zeroum1 += 1
+                                            break
+                                        if car1 == car2 and car1 == 'X' and car2 == 'X' and car3 == 3:
+                                            car3 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car3 and car1 == 'X' and car3 == 'X' and car2 == 2:
+                                            car2 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car3 and car2 == 'X' and car3 == 'X' and car1 == 1:
+                                            car1 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car5 and car4 == 'X' and car5 == 'X' and car6 == 6:
+                                            car6 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car6 and car4 == 'X' and car6 == 'X' and car5 == 5:
+                                            car5 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car6 and car5 == 'X' and car6 == 'X' and car4 == 4:
+                                            car6 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car7 == car8 and car7 == 'X' and car8 == 'X' and car9 == 9:
+                                            car9 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car7 == car9 and car7 == 'X' and car9 == 'X' and car8 == 8:
+                                            car8 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car8 == car9 and car8 == 'X' and car9 == 'X' and car7 == 7:
+                                            car7 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car4 and car1 == 'X' and car4 == 'X' and car7 == 7:
+                                            car7 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car7 and car1 == 'X' and car7 == 'X' and car4 == 4:
+                                            car4 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car4 == car7 and car4 == 'X' and car7 == 'X' and car1 == 1:
+                                            car1 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car8 == car5 and car8 == 'X' and car5 == 'X' and car2 == 2:
+                                            car2 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car8 and car2 == 'X' and car8 == 'X' and car5 == 5:
+                                            car5 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car2 == car5 and car2 == 'X' and car5 == 'X' and car8 == 8:
+                                            car8 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car6 == car9 and car6 == 'X' and car9 == 'X' and car3 == 3:
+                                            car3 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car9 and car3 == 'X' and car9 == 'X' and car6 == 6:
+                                            car6 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car6 and car3 == 'X' and car6 == 'X' and car9 == 9:
+                                            car9 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car5 and car1 == 'X' and car5 == 'X' and car9 == 9:
+                                            car9 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car1 == car9 and car1 == 'X' and car9 == 'X' and car5 == 5:
+                                            car1 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car9 and car5 == 'X' and car9 == 'X' and car1 == 1:
+                                            car1 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car5 and car3 == 'X' and car5 == 'X' and car7 == 7:
+                                            car7 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car3 == car7 and car3 == 'X' and car7 == 'X' and car5 == 5:
+                                            car5 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        if car5 == car7 and car5 == 'X' and car7 == 'X' and car3 == 3:
+                                            car3 = 'X'
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            print('Fim de jogo, o computador ganhou')
+                                            zeroum1 = 1
+                                            break
+                                        elif car1 == car2 and car1 == 'O' and car2 == 'O' and car3 == 3:
+                                            car3 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car3 and car1 == 'O' and car3 == 'O' and car2 == 2:
+                                            car2 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car3 and car2 == 'O' and car3 == 'O' and car1 == 1:
+                                            car1 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car5 and car4 == 'O' and car5 == 'O' and car6 == 6:
+                                            car6 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car6 and car4 == 'O' and car6 == 'O' and car5 == 5:
+                                            car5 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car6 and car5 == 'O' and car6 == 'O' and car4 == 4:
+                                            car6 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car7 == car8 and car7 == 'O' and car8 == 'O' and car9 == 9:
+                                            car9 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car7 == car9 and car7 == 'O' and car9 == 'O' and car8 == 8:
+                                            car8 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car8 == car9 and car8 == 'O' and car9 == 'O' and car7 == 7:
+                                            car7 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car4 and car1 == 'O' and car4 == 'O' and car7 == 7:
+                                            car7 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car7 and car1 == 'O' and car7 == 'O' and car4 == 4:
+                                            car4 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car4 == car7 and car4 == 'O' and car7 == 'O' and car1 == 1:
+                                            car1 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car8 == car5 and car8 == 'O' and car5 == 'O' and car2 == 2:
+                                            car2 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car8 and car2 == 'O' and car8 == 'O' and car5 == 5:
+                                            car5 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car2 == car5 and car2 == 'O' and car5 == 'O' and car8 == 8:
+                                            car8 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car6 == car9 and car6 == 'O' and car9 == 'O' and car3 == 3:
+                                            car3 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car9 and car3 == 'O' and car9 == 'O' and car6 == 6:
+                                            car6 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car6 and car3 == 'O' and car6 == 'O' and car9 == 9:
+                                            car9 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car5 and car1 == 'O' and car5 == 'O' and car9 == 9:
+                                            car9 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car1 == car9 and car1 == 'O' and car9 == 'O' and car5 == 5:
+                                            car1 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car9 and car5 == 'O' and car9 == 'O' and car1 == 1:
+                                            car1 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car5 and car3 == 'O' and car5 == 'O' and car7 == 7:
+                                            car7 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car3 == car7 and car3 == 'O' and car7 == 'O' and car5 == 5:
+                                            car5 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif car5 == car7 and car5 == 'O' and car7 == 'O' and car3 == 3:
+                                            car3 = 'X'
+                                            print('O computador jogou assim: ')
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        elif vezjog == 5 and car2 == 'O' and car9 == 'O':
+                                            car7 = 'X'
+                                        elif vezjog == 5 and car4 == 'O' and car9 == 'O':
+                                            car3 = 'X'
+                                        elif vezjog == 5 and car6 == 'O' and car9 == 'O':
+                                            car3 = 'X'
+                                        elif vezjog == 5 and car8 == 'O' and car9 == 'O':
+                                            car7 = 'X'
+                                        elif car5 == 5:
+                                            car5 = 'X'
+                                        elif car1 == 1:
+                                            car1 = 'X'
+                                        elif car3 == 3:
+                                            car3 = 'X'
+                                        elif car7 == 7:
+                                            car7 = 'X'
+                                        elif car9 == 9:
+                                            car9 = 'X'
+                                        elif car2 == 2:
+                                            car2 = 'X'
+                                        elif car4 == 4:
+                                            car4 = 'X'
+                                        elif car6 == 6:
+                                            car6 = 'X'
+                                        elif car8 == 8:
+                                            car8 = 'X'
+                                        print(f'Vez do jogador {nome}')
+                                        planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                        while True:
+                                            try:
+                                                des3 = int(input('Selicione sua opção: '))
+                                            except:
+                                                print('Você digitou um valor inválido!Tente novamente.')
+                                            else:
+                                                break
+                                        if des3 != 1 and des3 != 2 and des3 != 3 and des3 != 4 and des3 != 5 and des3 != 6 and des3 != 7 and des3 != 8 and des3 != 9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 != car1 and des3 != car2 and des3 != car3 and des3 != car4 and des3 != car5 and des3 != car6 and des3 != car7 and des3 != car8 and des3 != car9:
+                                            print('Você digitou um valor inválido, tente novamete!')
+                                        elif des3 == 1:
+                                            car1 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 2:
+                                            car2 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 3:
+                                            car3 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 4:
+                                            car4 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 5:
+                                            car5 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 6:
+                                            car6 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 7:
+                                            car7 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 8:
+                                            car8 = 'O'
+                                            zeroum2 = 1
+                                        elif des3 == 9:
+                                            car9 = 'O'
+                                            zeroum2 = 1
+                                        vezjog += 1
+                                        if zeroum2 == 1:
+                                            planilha(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            posfim = verificar(car1, car2, car3, car4, car5, car6, car7, car8, car9)
+                                            if posfim == 'O O ganhou!':
+                                                if o == 'computador':
+                                                    print(f'fim de jogo, o jogador {x} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                                elif x == nome:
+                                                    print(f'fim de jogo, o jogador {nome} ganhou!')
+                                                    zeroum1 += 1
+                                                    break
+                                            if car1 != 1 and car2 != 2 and car3 != 3 and car4 != 4 and car5 != 5 and car6 != 6 and car7 != 7 and car8 != 8 and car9 != 9:
+                                                print('Jogo empatado!')
+                                                zeroum1 += 1
+                                                break
